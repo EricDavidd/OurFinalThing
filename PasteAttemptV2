@@ -1,3 +1,4 @@
+
 # import image module from pillow 
 from PIL import Image 
 import os.path
@@ -6,19 +7,20 @@ import PIL
 # open the image 
 directory = os.path.dirname(os.path.abspath(__file__))
 logo_file = os.path.join(directory, 'ISTE_logo.jpg')
-logo_image = Image.open(logo_file) 
+logo_pic = Image.open(logo_file) 
+logo_image = logo_pic.resize((270, 114))
   
 # make a copy the image so that the  
 # original image does not get affected 
 logo_imagecopy = logo_image.copy() 
-class_file = os.path.join(directory, 'class.jpg')
-class_image = Image.open(class_file) 
-class_imagecopy = class_image.copy() 
+background_file = os.path.join(directory, 'class.jpg')
+background_image = Image.open(background_file) 
+background_imagecopy = background_image.copy() 
   
 # paste image giving dimensions 
-position = ((class_image.width - logo_image.width), (class_image.height - logo_image.height))
-class_imagecopy.paste(logo_image, position) 
-class_image.paste(logo_image, position)
+position = ((background_image.width - logo_image.width), (background_image.height - logo_image.height))
+background_imagecopy.paste(logo_image, position) 
+background_image.paste(logo_image, position)
 
 def get_images(directory=None):
     """ Returns PIL.Image objects for all the images in directory.
@@ -53,4 +55,4 @@ def get_images(directory=None):
 file_list, image_list = get_images(directory)
 new_directory = os.path.join(directory, 'modified')
 new_image_filename = os.path.join(new_directory, 'ahh' + '.png')  
-class_image.save(new_image_filename)
+background_image.save(new_image_filename)
