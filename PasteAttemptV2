@@ -16,7 +16,9 @@ class_image = Image.open(class_file)
 class_imagecopy = class_image.copy() 
   
 # paste image giving dimensions 
-class_imagecopy.paste(logo_imagecopy, (100, 200)) 
+position = ((class_image.width - logo_image.width), (class_image.height - logo_image.height))
+class_imagecopy.paste(logo_image, position) 
+class_image.paste(logo_image, position)
 
 def get_images(directory=None):
     """ Returns PIL.Image objects for all the images in directory.
@@ -51,4 +53,4 @@ def get_images(directory=None):
 file_list, image_list = get_images(directory)
 new_directory = os.path.join(directory, 'modified')
 new_image_filename = os.path.join(new_directory, 'ahh' + '.png')  
-logo_imagecopy.save(new_image_filename)
+class_image.save(new_image_filename)
