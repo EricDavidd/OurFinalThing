@@ -120,7 +120,7 @@ def put_corners(original_image, pixels, color):
     return result
 
             
-def brand_image():
+def add_logo():
         directory = os.path.dirname(os.path.abspath(__file__)) # Defines the program's directory to use the working directory.
         new_directory = os.path.join(directory, 'modified') # Assiging the variable new_directory to a new folder called "modified" in the working directory.
         try:
